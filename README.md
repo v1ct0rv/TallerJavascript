@@ -7,7 +7,7 @@ Contenido
 
 1.  <strong>Control de Versiones con git y github</strong>: 
 Presentación de git y github, Instalación de git, creación un repositorio, cómo agregar archivos, Hacer Commit, Cómo mover/eliminar/hacer revert de archivos, Cómo hacer tags, branches y merge, patrones en git.
-2.  <strong><strong>Introducción a Javascript</strong>:  
+2.  <strong>Introducción a Javascript</strong>:  
 Qué es javascript, evolución de javascript, porqué es importante javascript, motores de render, Qué es NaN, null, undefined, Falsy Values, typeof.
 3.  <strong>POO con Javascript</strong>: 
 Contructores, Objectos, Funciones, Prototipos, Métodos públicos y privados, Tipos de herencia, contextos, scope & closures, extensión de objectos.
