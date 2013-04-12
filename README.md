@@ -5,11 +5,11 @@ Taller de Javascript y Node.js
 
 Contenido
 
-1.  Control de Versiones con git y github
+1.  <strong>Control de Versiones con git y github</strong>: 
 Presentación de git y github, Instalación de git, creación un repositorio, cómo agregar archivos, Hacer Commit, Cómo mover/eliminar/hacer revert de archivos, Cómo hacer tags, branches y merge, patrones en git.
-2.  Introducción a Javascript
+2.  Introducción a Javascript: 
 Qué es javascript, evolución de javascript, porqué es importante javascript, motores de render, Qué es NaN, null, undefined, Falsy Values, typeof.
-3.  POO con Javascript
+3.  POO con Javascript: 
 Contructores, Objectos, Funciones, Prototipos, Métodos públicos y privados, Tipos de herencia, contextos, scope & closures, extensión de objectos.
 4.  JQuery : Selectores, Ajax, json, jsonp
 Manipulación del dom, ejemplos en vivo con la consola de Chrome, Qué es JSON / JSONP, Ejemplos de ajax y JSONP, Manejo de datos usando XML, JSON y JSONP, Actualizando el navegador asíncronamente usando AJAX
