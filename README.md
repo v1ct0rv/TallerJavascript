@@ -11,7 +11,7 @@ Presentación de git y github, Instalación de git, creación un repositorio, c�
 Qué es javascript, evolución de javascript, porqué es importante javascript, motores de render, Qué es NaN, null, undefined, Falsy Values, typeof.
 3.  <strong>POO con Javascript</strong>: 
 Contructores, Objectos, Funciones, Prototipos, Métodos públicos y privados, Tipos de herencia, contextos, scope & closures, extensión de objectos.
-4.  <strong>JQuery : Selectores, Ajax, json, jsonp
+4.  <strong>JQuery : Selectores, Ajax, json, jsonp</strong>: 
 Manipulación del dom, ejemplos en vivo con la consola de Chrome, Qué es JSON / JSONP, Ejemplos de ajax y JSONP, Manejo de datos usando XML, JSON y JSONP, Actualizando el navegador asíncronamente usando AJAX
 5. <strong>External API’s : Google Maps</strong>: 
 Ejemplo Aplicación Javascript
