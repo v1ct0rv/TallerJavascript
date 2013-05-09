@@ -5,19 +5,19 @@
 	<title>Javascript 101</title>
 </head>
 <body>
-	<div>Javascript 101</div>
+	<p>Javascript 101</p>
 	
-	<form>
-		<input type="text" />
-		<input type="submit" onclick="validateEmail()" value="Validate" />
-	</form>
-
+	<!-- Basic use example -->	
+	<label for="email">Email</label>
+	<input type="text" id="email"/>
+	<input type="button" onclick="validateEmail()" value="Validate" />
 	<script type="text/javascript">
 		function validateEmail() {
-			window.console.log('Yes, that is an e-mail!');
-			return false; 
+			//console.log('Yes, that is an e-mail!');
+			alert('Yes, that\'s an email');
 		}
 	</script>
+	<!-- END:Basic use example -->	
 
 </body>
 </html>
