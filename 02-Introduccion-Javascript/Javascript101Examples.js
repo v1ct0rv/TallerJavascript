@@ -45,4 +45,28 @@ parseInt("10",10)
 parseInt("10",2)
 
 typeof(nan); //Undefined
+
+isNaN(1);
+isNaN("1");
+isNaN("Hola");
+
 typeof(NaN); //Number
+isNaN(NaN); 
+
+/*************** Null vs Undefined ****************/
+window.noExiste; //Undefined
+var otraCosa;
+window.otraCosa; // Undefined
+
+otraCosa = null; 
+window.otraCosa; 
+
+/*************** Falsy/Truthy Values **************/
+
+window.noExiste == window.otraCosa //true ?? --> Falsy Value
+
+false + 1; 
+false == 0;
+
+true + 1;
+true == 1; 
