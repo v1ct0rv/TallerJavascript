@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset='utf-8'>
+	<title>Javascript 101</title>
+</head>
+<body>
+	<p>Javascript 101</p>
+	
+	<script type="text/javascript">
+		var student = {
+			fullname : "Pamela Rucinque", 
+			city: "Medellín", 
+
+			printInformation : function() {
+				var text = "Access to printInformation";
+				var that = this; 
+
+				// printInformation has direct access to student using this. 
+				console.log("printInformation using this to access student: " + this.fullname); 
+
+				function printHelper() {
+					console.log("printHelper using THIS to access student: " + this.fullname);
+					
+					console.log("printHelper has: " + text);
+					console.log("printHelper using THAT to access student: " + that.fullname);
+				}
+
+				printHelper();
+
+			}
+		}
+	</script>
+
+</body>
+</html>
+
