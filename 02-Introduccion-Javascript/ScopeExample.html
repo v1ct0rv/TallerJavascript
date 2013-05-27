@@ -30,6 +30,20 @@
 
 			}
 		}
+
+		/**************** Scope ***********************/
+
+		function scopeExplanation() {
+			var functionVariable = "definida fuera del if";
+
+			if (true) {
+				var ifVariable = "definida dentro del if";
+			}
+
+			console.log('La función tiene acceso a la variable ' 
+				+ functionVariable + " y a la variable " + ifVariable);
+		}
+		
 	</script>
 
 </body>
