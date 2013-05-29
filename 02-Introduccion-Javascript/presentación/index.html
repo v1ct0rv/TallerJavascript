@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Javascript 101</title>
+
+		<meta name="description" content="Introducción a Javascript para Desarrolladores">
+		<meta name="author" content="Pamela Rucinque">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css" />
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme" />
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>JavaScript 101</h1>
+					<h3>Introducción a JavaScript para Desarrolladores</h3>
+					<p>
+						<small>Created by Pamela Rucinque / <a href="http://twitter.com/pamrucinque">@PamRucinque</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Lo que "sabemos" hoy...</h2>
+					</br>
+					<ul>
+						<li>Usado para crear páginas interactivas</li>
+						<li>Se usa del lado del cliente**</li>
+						<li>Solo se necesita el browser para ejecutarlo**</li>
+					</ul>
+
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Un poco de historia...</h2>
+					</section>
+					<section>
+						<h3>1990</h3>
+						<p>Netscape creó LiveScript</p>
+						<figure>
+							<img src="images/Netscape.png" style="border: none;">
+						</figure>
+					</section>
+					<section>
+						<h3>1995</h3>
+						<p>Sun Microsystems se une al proyecto y lo relanzan como JavaScript</p>
+						<figure>
+							<img src="images/js.jpeg" style="border: none;">
+						</figure>
+						<aside class="notes">
+							Netscape y sun se unen para evitar que Microsoft se imponga en los browsers
+							Sun quería a HotJava en los browsers, netscape decia q era muy pesado.
+						</aside>
+					</section>
+					<section>
+						<h3>1996</h3>
+						<p>Microsoft Lanza JScript</p>
+						<aside class="notes">
+							Le hicieron ingeniería inversa a Javascript
+						</aside>
+					</section>
+					<section>
+						<h3>1997</h3>
+						<p>Se crea el estándar: ECMAScript</p>
+						<aside class="notes">
+							Primero el lenguaje, luego el estándar
+						</aside>
+					</section>
+					<section>
+						<h3>2006</h3>
+						<p>En PSL nos arrancabamos el pelo por culpa de JavaScript</p>
+						<p>Basicamente por culpa de IE6, había que darle soporte</p>
+						<p style="color: orange; text-decoration: bold;">
+							Pero el fin de IE6 <a href="http://www.ie6countdown.com/">llegó!</a>
+						</p>
+						<aside class="notes">
+							Primero el lenguaje, luego el estándar
+						</aside>
+					</section>
+					
+				</section>
+
+				<section>
+					<h3> Características Técnicas</h3>
+						<ul>
+							<li>Es un lenguaje interpretado, o sea no se compila</li>
+							<li>Es debilmente tipado</li>
+							<li>Dentro del body está contenido en el tag <code style="color:#004C99;">&lt;script&gt;</code></li>
+							<li>Se puede importar un archivo externo:</li>
+						</ul>
+						<pre> 
+							<code data-trim contenteditable>
+&lt;script type="text/javascript" src="myScript.js" />
+							</code>
+						</pre>
+					</script>
+					<aside class="notes">
+						Debilmente tipado Most Important Feat: Las propiedades pueden tomar cualquier tipo de valor.. Primero un string.. Luego un número… 
+
+						El souce code es también el entregable, porque como era embebido en las paginas, y las paginas eran texto… ahora eso ha cambiado pero se quedó como texto
+
+					</aside>
+				</section>
+
+				<section>
+					<h2>Javascript Engines</h2>
+					<ul>
+						<li>Chrome --> V8</li>
+						<li>Firefox  --> Rhino</li>
+						<li>I.E --> Chakra</li>
+						<li>Safari --> JavascriptCore</li>
+					</ul>
+
+				</section>
+				<section>
+					<section>
+						<h2>Cómo habíamos usado Javascript hasta recientemente?</h2>
+						<small>**Yo, por lo menos!</small>
+					</section>
+					<section>
+						<!-- El código dentro de code no puede estar identado. -->
+						<pre>
+							<code data-trim contenteditable >
+<input type="button" onclick="validateEmail()" value="Validate" />
+
+<script type="text/javascript">
+function validateEmail() {
+	//console.log('Yes, that is an e-mail!');
+	alert('Yes, that\'s an email');
+}
+</script>
+							</code>
+						</pre>
+					</section>
+					<section> 
+						<h3>Cómo lo usan ahora?</h3>
+					</section>
+					<section> 
+						<h4>Tweetmap.it <a href="http://tweetmap.it/"> > </a></h4>
+						<p>TopoJSON, d3.js, Node.js, PhantomJS</p>
+					</section>
+					<section> 
+						<h4>The Trip <a href="http://www.jacktorrancetrip.com/"> > </a></h4>
+						<p>JavaScript (JQuery) + HTML5</p>
+					</section>
+					<section> 
+						<h4>Chrome Web Lab <a href="http://www.chromeweblab.com/"> > </a></h4>
+						<p>WebGL, three.js</p>
+					</section>
+					<section> 
+						<p>HTML5 + CSS3 ha potenciado las <spam style="color: orange;">Aplicaciones Web</spam> y el uso de JavaScript</p>
+						<figure>
+							<img src="images/html5.jpg">
+						</figure>
+					</section>
+				</section>
+				
+
+				<section data-state="soothe">
+					<h2>Ahora si... El Lenguaje</h2>
+				</section>
+
+				<section>
+					<section>
+						<h3>Tipos de Valores</h3>
+						<p>Number * Boolean * String * <span style="color:orange">Undefined</span></p>
+						<p>Function * Objects (Array - Date - 
+							<span style="color:orange">Null</span>)</p>
+						<aside class="notes">
+							Abrir Consola y jugar con --> typeof
+
+							Cómo sé cuando un objeto es un arreglo? Hay que ejecutar el instanceof. Aplica también para Date. 
+
+							Todos los valores al final se comportan como objetos, a todos se le pueden ejecutar funciones. 
+
+						</aside>
+					</section>
+					<section>
+						<h2>Números</h2>
+							<p>Son double de 64 bits de presición</p>
+							<p>Funciones que convierten valores a números : </p>
+							<pre>
+								<code data-trim contenteditable>
+var num1 = Number();  
+var num2 = parseInt("23", 10);
+var num3 = parseFloat("4.0");
+								</code>
+							</pre>
+							<p>Valores Especiales</p>
+							<p style="color:orange;">NaN, Infinity, -Infinity, MAX_VALUE, MIN_VALUE</p>
+					</section>
+					<section>
+						<h2>Números</h2>
+							<pre>
+								<code data-trim contenteditable>
+//64bit precision 
+0.1 + 0.2;
+
+//Methods to parse Strings into Numbers
+parseInt("10",10)
+parseInt("10",2)
+
+typeof(nan); 
+
+isNaN(1);
+isNaN("1");
+isNaN("Hola");
+
+typeof(NaN); 
+isNaN(NaN); 
+								</code>
+							</pre>
+					</section>
+					<section>
+						<h2>Strings</h2>
+							<p>Soporta caracteres unicode, así que la localización no es un problema</p> <br/>
+							<p>Son objetos, soportan funciones: 
+							<ul>
+								<li>"Hola Mundo".charAt(0);</li>
+								<li>"calle".toUpperCase();</li>
+								<li>length, concat, indexOf, ....etc</li>
+							</ul>
+							</p><br/>
+							<p>Comillas simples o dobles funcionan igual </p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Null vs. Undefined</h3>
+						<br />
+						<p>Undefined es el valor de una variable qeu no se inicializa</p>
+						<p>Undefined es un tipo de Dato</p>
+						<pre>
+							<code data-trim contenteditable>
+var id; 
+typeof(id);							
+							</code>
+						</pre>
+						<p>Null es un valor asignable</p>
+						<p>Null es un objeto</p>
+						<pre>
+							<code data-trim contenteditable>
+var name = null; 
+typeof(name);							
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Null vs. Undefined</h3>
+							<pre>
+								<code data-trim contenteditable>
+window.nonExistent;
+var aThing;
+window.aThing;
+
+aThing = null; 
+window.aThing; 
+								</code>
+							</pre>
+					</section>
+					<section data-state="alert">
+						<h3>Null vs. Undefined</h3>
+						Pero.. <br>
+						null == undefined --> true?
+							<pre>
+								<code data-trim contenteditable>
+if (null == undefined) {
+	document.writeln('Javascript tiene sus partes oscuras!')
+}
+								</code>
+							</pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Falsy and Truthy Values</h2><br>
+						<p>
+							Javascript tiene valores booleanos: <code style="color:#004C99;">true</code> y <code style="color:#004C99;">false</code> <br>
+							que funcionan normal, por ejemplo: 
+							<pre>
+								<code data-trim contenteditable>
+true + 1;
+true == 1; 
+								</code>
+							</pre>
+							Con algunos operadores <code style="color:#004C99;">true</code> y <code style="color:#004C99;">false</code> actúan como 1 y 0
+						</p>
+					</section>
+					<section>
+						<h2>Falsy and Truthy Values</h2><br>
+						<p>
+							Todos los valores tienen una "representación" booleana
+							<pre>
+								<code data-trim contenteditable>
+if("Esto es un string") {
+	console.log('En JavaScript, esto es legal);
+}
+								</code>
+							</pre>
+							Eso <strong>NO</strong> quiere decir que <code style="color:#004C99;">"Un Texto" == true</code> <br><br>
+							Los siguientes valores son <span style="color: orange;">"Falsy"</span><br>
+							<code>false - 0 - '' - NaN - null - undefined</code><br><br>
+							El resto son <span style="color: orange;">"Truthy"</span>, incluyendo<br>
+							<code>"false" y "0"</code>
+						</p>
+					</section>
+					<section>
+						<h2>Falsy and Truthy Values</h2><br>
+						<p>
+							<pre>
+								<code data-trim contenteditable>
+//Ejemplo 1
+if (5) {
+	console.log('5 en un valor truthy');
+}
+
+//Ejemplo 2
+if (0) {
+	console.log('0 NO es un valor truthy');
+} else {
+	console.log('0 es un valor falsy');
+}
+
+//Ejemplo 3
+if (['array', 'de', 'strings']) {
+	console.log('Los arrays también son truthy');
+}
+								</code>
+							</pre>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Operadores</h2>
+					</section>
+					<section>
+						<h3>===  vs. ==</h3>
+						Type Coercion<br><br>
+						<p>
+							Cuando se usa <code style="color: orange;">==</code> uno de los dos valores es convertido antes de la comparación<br>
+							Hay <a href="http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/">reglas</a> para la conversión. La mayoría convierte a número uno de los valores
+							<pre>
+								<code data-trim contenteditable>
+1 == true;
+'0.1' == 0.1;
+'hola mundo' == ['hola mundo'];
+null == undefined;
+null == null;
+undefined == undefined;
+								</code>
+							</pre>
+						</p>
+					</section>
+<section>
+						<h3>===  vs. ==</h3>
+						Type Coercion<br><br>
+						<p>
+							Cuando se usa <code style="color: orange;">===</code> los valores deben ser del mismo tipo, de lo contrario retorna false
+							<pre>
+								<code data-trim contenteditable>
+1 === true;
+'0.1' === 0.1;
+'hola mundo' === ['hola mundo'];
+null === undefined;
+null === null;
+undefined === undefined;
+								</code>
+							</pre>
+						</p>
+					</section>
+
+					<section>
+						<h2>+</h2><br>
+						<p>
+							Si los 2 valores son números los suma, sino los concatena <br>
+						</p>
+						<pre>
+								<code data-trim contenteditable>
+//Ejemplo 1
+3 + 4; 
+
+//Ejemplo 2
+3 + ' Es un Número';
+
+//Ejemplo 3
+'$' + 3 + 4;
+
+//Ejemplo 4
+3 + 4 + 'USD';
+								</code>
+							</pre>
+							Los valores se evalúan de izquierda a derecha
+					</section>
+					<section>
+						<h3><code>&&</code> </h3>
+						<h5>'El operador Guardián'</h5><br>
+						<p>
+							En un <code style="color:orange;">if</code> funciona igual que en Java o .Net, como un AND <br>
+						</p>
+						<pre>
+								<code data-trim contenteditable>
+if (true && false) {
+ console.log('Si esto se imprime no vuelvo, en mi vida, a programar!');
+}
+
+if (true && true) {
+ console.log('&& funciona como un operador AND normal');
+}
+								</code>
+							</pre>
+					</section>
+					<section>
+						<h3><code>&&</code> </h3>
+						<h5>'El operador Guardián'</h5>
+						<p>
+							En la inicialización de variables, <code style="color:orange;">&&</code>  es un guardián<br><br>
+							Si el primer valor es <span style="color: orange;">Truthy</span>, retorna el <span style="color: orange;">segundo</span><br>
+							Si el primer valor es <span style="color: green;">Falsy</span>, retorna el <span style="color: green;">primero</span><br>
+						</p>
+						<pre>
+								<code data-trim contenteditable>
+//Lanza una excepción
+var guardOperator = window.Person.name; 
+
+//No lanza la excepción, simplemente le asigna window.Person
+//o sea undefined
+var guardOperator = window.Person && window.Person.name; 
+
+//Ahora window.Person.name sí tiene un valor
+window.Person = {name: "Pam"};
+
+//Ya no asigna window.Person, sino window.Person.name
+var guardOperator = window.Person && window.Person.name;
+								</code>
+							</pre>
+					</section>
+					<section>
+						<h3><code>||</code> </h3>
+						<h5>'El operador por Defecto'</h5><br>
+						<p>
+							En un <code style="color:orange;">if</code> funciona igual que en Java o .Net, como un OR <br>
+						</p>
+						<pre>
+								<code data-trim contenteditable>
+if (false || false) {
+ console.log('Si esto se imprime no vuelvo, en mi vida, a programar!');
+}
+
+if (true || false) {
+ console.log('|| funciona como un operador OR normal');
+}
+								</code>
+							</pre>
+					</section>
+					<section>
+						<h3><code>||</code> </h3>
+						<h5>'El Operador por Defecto'</h5><br>
+						<p>
+							Inicializando una variable, <code style="color:orange;">||</code>  es un operador por defecto<br><br>
+							Si el primer valor es <span style="color: orange;">Truthy</span>, retorna el <span style="color: orange;">Primero</span><br>
+							Si el primer valor es <span style="color: green;">Falsy</span>, retorna el <span style="color: green;">Segundo</span><br>
+						</p>
+						<pre>
+							<code data-trim contenteditable>
+//Si el primer valor es undefined, entonces use el valor "Por defecto"
+var defaultValue = window.noValue || "This is my default Value";
+
+//Si el primer valor existe, no toma el valor por defecto
+window.aValue = "House";
+var defaultValue = window.aValue || "This is my default Value";
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Statements</h3>
+						<ul>
+							<li><code>for</code></li>
+							<li><code>while</code></li>
+							<li><code>do While</code></li>
+							<li><code>swhitch</code></li>
+							<li><code>if/else</code></li>
+							<li><code>try/catch</code></li>
+							<li><code>break</code></li>
+							<li><code>continue</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3><code>for</code></h3>
+						<p>
+							Hay dos tipos de <code>for</code>:<br>
+							El que todos conocemos
+							<pre>
+								<code data-trim contenteditable>
+var vector = ['esto', 'es', 'un', 'vector'];
+for (var i = 0; i < vector.length; i++)  {
+	console.log(vector[i]);
+} 
+								</code>
+							</pre>
+							Y otro que itera sobre las propiedades de un objeto, incluyendo las heredadas
+							<pre>
+								<code data-trim contenteditable>
+var casa = {color:'rojo', portero:'false', telefono:'23123213'};
+for (var atributo in casa)  {
+	console.log(atributo);
+} 
+								</code>
+							</pre>
+						</p>
+					</section>
+				</section>
+				<section>
+					<h3>Scope</h3>
+					Solo existen dos scopes: Global y por función.
+					<small>No existe scope por bloque.</small>
+					<pre>
+						<code data-trim contenteditable>
+var globalVar = 'es visible en todas partes';
+
+function scopeExplanation() {
+ var functionVariable = "definida fuera del if";
+
+ if (true) {
+  var ifVariable = "definida dentro del if";
+ }
+
+ console.log('La función tiene acceso a la variable ' 
+ + functionVariable + " y a la variable " + ifVariable);
+
+ console.log('Y la variable globalVar ' + globalVar);
+}
+
+console.log('Fuera de la función la variable functionVariable es ' 
++ functionVariable);
+						</code>
+					</pre>
+				</section>
+				<section data-state="sunset">
+					<h3>Ningún Lenguaje es Perfecto... </h3>
+					<iframe width="420" height="315" src="http://www.youtube.com/embed/kXEgk1Hdze0" frameborder="0" allowfullscreen></iframe>
+				</section>
+				<section data-state="blackout">
+					<h1 style="color:white;">THE END.</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
