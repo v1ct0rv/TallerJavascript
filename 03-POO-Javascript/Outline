@@ -1,14 +1,35 @@
 Objetos
+Los primitivos se comportan como objetos, pero son inmutables
+
+var verdad = 'Pame';
+verdad + ' es maestra de maestros en Javascript';
+
+verdad; --> Solo sale Pame
+
+Los objetos se pasan por referencia. Objetos, los primitivos no!
+
+var student = { name: 'Pipe'};
+var teacher = student; 
+
+teacher.name = 'Pam';
+
+console.log(student.name); -->Pam, los objetos pasan por referencia
+
+var name = student.name;
+name = 'Ricardo';
+
+console.log(student.name);
 	
+- Prototipos
 
-Funciones
-	scope de functions.
-	Contructores
+- Funciones
+	- scope de functions.
+	- Contructores
 
 
-Prototipos
 Métodos públicos y privados
 Tipos de herencia
 contextos
 scope & closures
 extensión de objectos.
+Buenas prácticas
