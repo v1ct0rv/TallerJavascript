@@ -22,7 +22,7 @@ Animal.prototype.correr = function () {
 
 var Perro = function(name) {
 
-	this.nombre = name; 
+	Animal.call(this, name);
 
 	this.recogerPeriodico = function() {
 		console.log('Recogí el periódico');
@@ -44,7 +44,9 @@ var baco = new Perro('Baco');
 
 
 var Pincher = function (name) {
-  this.nombre = name;
+  
+  Perro.call(this, name);
+
   this.serFeo = function() {
    console.log('Soy un Pincher y soy feo');
   }
