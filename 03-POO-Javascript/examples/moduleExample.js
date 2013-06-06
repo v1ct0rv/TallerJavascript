@@ -11,6 +11,11 @@ var CalculadoraDieta = function() {
   return Math.random();
  }
 
+ var caloriasHarinas = function() {
+  //calculo Complejo
+  return Math.random();
+ }
+
  return function () {
 
  }
