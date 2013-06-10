@@ -823,9 +823,95 @@ var fulano = persona();
 								<img style="border: solid grey 1px; vertical-align: top;" src="images/herenciaPrototype.png">
 							</figure>
 						</p>
+					</section>
+					<section>
+						<h3>Herencia y Polimorfismo</h3>
+						<code style="font-weight:bold">prototype</code> vs. 
+							<code style="font-weight:bold">__proto__</code><br><br>
 						<p style="text-align:left;">
-							<code style="font-weight:bold">constructor</code> es el método que se invoca cuando se ejecuta 'new'
+							Ya habíamos revisado prototype como concepto: <br><br>	
 						</p>
+						<ul>
+							<li>Los objetos tienen un prototipo del cual heredan</li>
+							<li>Si se adiciona una propiedad al prototipo, todos los hijos la tendrán</li>
+						</ul><br><br>
+						<p style="text-align:left;">
+							Pero hay una propiedad <code style="font-weight:bold">prototype</code> que puede ser confusa y cuando se usan constructores para crear objetos es importante entender la diferencia.
+						</p>
+					</section>
+					<section>
+						<h3>Herencia y Polimorfismo</h3>
+						<code style="font-weight:bold">prototype</code> vs. 
+							<code style="font-weight:bold">__proto__</code><br><br>
+						<p style="text-align:left;">
+							<code style="font-weight:bold">prototype</code> es una propiedad de las funciones. <br>
+							Es particularmente importante con constructores
+						</p>
+						<pre>
+							<code contentenabled data-trim class="javascript">
+var imprimir = function() {}
+imprimir.prototype;
+
+var Carro = function() {}
+var myCar = new Carro();
+Carro.prototype;
+							</code>
+						</pre>
+						<p style="text-align:left;">
+							Object, Function, Array, Number, etc son ejemplos de constructores.
+						</p>
+					</section>
+					<section>
+						<h3>Herencia y Polimorfismo</h3>
+						<code style="font-weight:bold">prototype</code> vs. 
+							<code style="font-weight:bold">__proto__</code><br><br>
+						<p style="text-align:left;">
+							<code style="font-weight:bold">constructor</code> es una propiedad de <code style="font-weight:bold">prototype</code>. Es el método que se invoca cuando se usa 'new'.
+						</p>
+						<pre>
+							<code contentenabled data-trim class="javascript">
+Object.prototype.constructor;
+Number.prototype.constructor;
+
+var Person = function () {
+	this.name = '';
+}
+
+Person.prototype.constructor;
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Herencia y Polimorfismo</h3>
+						<code style="font-weight:bold">prototype</code> vs. 
+							<code style="font-weight:bold">__proto__</code><br><br>
+						<p style="text-align:left;">
+							<code style="font-weight:bold">__proto__</code> es un link "escondido" que tienen todos los objetos en JavaScript al prototipo del cual fueron creados. <br>
+							<pre>
+							<code contentenabled data-trim class="javascript">
+//Un objeto literal tiene __proto__
+var o = {};
+o.__proto__;
+
+//Una función literal tiene __proto__
+var hagoAlgo = function () {};
+hagoAlgo.__proto__;
+
+//Los tipos tienen __proto__
+Function.__proto__;	
+							</code>
+						</pre>
+						</p>
+						<p style="text-align:left;">
+							<code style="font-weight:bold">__proto__</code> también tiene la propiedad <code style="font-weight:bold">constructor</code><br>
+							No use <code style="font-weight:bold">__proto__</code> directamente en su código.
+						</p>
+					</section>
+					<section>
+						<h3>Herencia y Polimorfismo</h3>
+						<code style="font-weight:bold">prototype</code> vs. 
+							<code style="font-weight:bold">__proto__</code><br><br>
+						<code style="font-weight:bold">constructor</code> es el método que se invoca cuando se ejecuta 'new'
 					</section>
 					<section>
 						<h3>Herencia y Polimorfismo</h3><br>
