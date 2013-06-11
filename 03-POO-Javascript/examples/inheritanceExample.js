@@ -20,32 +20,38 @@ Animal.prototype.correr = function () {
 	console.log('Estoy corriendo');
 }
 
-var Perro = function(name) {
-
+var Perro = function(name, raza) {
+	
+	//Invocando al constructor del padre
 	Animal.call(this, name);
 
-	this.recogerPeriodico = function() {
-		console.log('Recogí el periódico');
-	}
+	var _raza = raza || 'Desconocida';
 
-	this.presentarse = function() {
-		Animal.prototype.presentarse.call(this);
-		console.log('Ah! y además soy un perro!');
+	this.getRaza = function () {
+		return _raza;
 	}
-
 }
 
 //La magia!
 Perro.prototype = new Animal();
 Perro.prototype.constructor = Perro;
 
+Perro.prototype.recogerPeriodico = function() {
+	console.log('Recogí el periódico');
+}
+
+Perro.prototype.presentarse = function() {
+	Animal.prototype.presentarse.call(this);
+	console.log('Ah! y además soy un perro!');
+}
+
 var loro = new Animal('Loro'); 
-var baco = new Perro('Baco');
+var baco = new Perro('Baco', 'Weimaraner');
 
 
 var Pincher = function (name) {
   
-  Perro.call(this, name);
+  Perro.call(this, name, 'Pincher');
 
   this.serFeo = function() {
    console.log('Soy un Pincher y soy feo');

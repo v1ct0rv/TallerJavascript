@@ -903,15 +903,47 @@ Function.__proto__;
 						</pre>
 						</p>
 						<p style="text-align:left;">
-							<code style="font-weight:bold">__proto__</code> también tiene la propiedad <code style="font-weight:bold">constructor</code><br>
-							No use <code style="font-weight:bold">__proto__</code> directamente en su código.
+							Cuando se accede a una propiedad y el objeto no la tiene, JS la busca en <code style="font-weight:bold">__proto__</code>.
 						</p>
 					</section>
 					<section>
 						<h3>Herencia y Polimorfismo</h3>
 						<code style="font-weight:bold">prototype</code> vs. 
+							<code style="font-weight:bold">__proto__</code><br>
+							<pre>
+							<code contenteditable data-trim class="javascript">
+var Person = function(name) {
+ this.name = name || '';
+}
+
+Person.saludar = function() {
+ console.log('Hola!');
+}
+
+Person.prototype.presentarse = function() {
+ console.log('Soy ' + this.name);
+}
+
+var confusio = new Person('Confusio');
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Herencia y Polimorfismo</h3>
+						<code style="font-weight:bold">prototype</code> vs. 
 							<code style="font-weight:bold">__proto__</code><br><br>
-						<code style="font-weight:bold">constructor</code> es el método que se invoca cuando se ejecuta 'new'
+							<figure style="border: solid grey 1px;">
+								<img style="border: solid grey 1px; vertical-align: top;" src="images/protoConstructor.png">
+						</figure><br>
+						<figure style="border: solid grey 1px;">
+								<img style="border: solid grey 1px; vertical-align: top;" src="images/protoGrafico.png">
+						</figure>
+					</section>
+					<section>
+						<h3>Herencia y Polimorfismo</h3><br>
+						<figure style="border: solid grey 1px;">
+								<img style="border: solid grey 1px; vertical-align: top;" src="images/herenciaEnunciado.png">
+						</figure>
 					</section>
 					<section>
 						<h3>Herencia y Polimorfismo</h3><br>
@@ -922,7 +954,7 @@ var Animal = function () {
 }
 
 var Perro = function() {
- this.recogerPeriodico = function() {}
+ //... código definición perro
 }
 
 //La magia!
@@ -931,6 +963,12 @@ Perro.prototype.constructor = Perro;
 							</code>
 						</pre>
 						Revisemos con más detalle el <a href="../examples/inheritanceExample.js">ejemplo</a>
+					</section>
+					<section>
+						<h3>Herencia y Polimorfismo</h3><br>
+						<figure style="border: solid grey 1px;">
+								<img style="border: solid grey 1px; vertical-align: top;" src="images/herenciaGrafico.png">
+						</figure>
 					</section>
 				</section>
 				<section>

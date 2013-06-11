@@ -16,7 +16,8 @@ var CalculadoraDieta = function() {
   return Math.random();
  }
 
- return function () {
-
+ return function(plato) {
+   var peso = calcularCalorias() * caloriasHarinas();
+   console.log('Usted engordó ' + peso);
  }
 }
