@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Mustache</title>
+
+		<meta name="description" content="Introducción a Mustache JS">
+		<meta name="author" content="Ricardo Arango">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css" />
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme" />
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Mustache JS</h1>
+					<h3>Introducción a Mustache JS</h3>
+					<p>
+						<small>Created by Ricardo Arango</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Qué es Mustache?</h2>
+					</br>
+					<p>
+						Framework para definir plantillas cuya principal característica es el no uso de lógica. (if, else,
+						for, etc). Se define enteramente mediante el uso de tags.
+						Tiene implementaciones para Ruby, JavaScript, Python, PHP, Perl, Objective-C, Java, .NET, Android, C++, Go, Lua, Scala, etc. <strong>Mustache JS</strong> es la implementación Mustache para JavaScript.
+					</p>
+				</section>
+
+				<section>
+					<h2>Donde uso Mustache JS?</h2>
+					</br>
+					<p>
+						Mustache JS puede ser usado para pintar templates Mustache en cualquier parte del código JavaScript.
+					</p>
+				</section>
+
+				<section>
+					<h2>Por qué Mustache JS?</h2>
+					</br>
+					<ul>
+						<li>Fácil de usar, poca complejidad.</li>
+						<li>Interpreta datos en formato JSON y los ajusta al template automáticamente.</li>
+					</ul>
+				</section>
+
+				<section>
+						<h2>Mostrando datos sin Mustache JS</h2>
+						<pre>
+								<code data-trim contenteditable>
+<div id='empleadoBox'>
+ </div>
+								</code>
+							</pre>
+							<pre>
+								<code data-trim contenteditable>
+var empleado = {nombre: 'Ricardo', apellido: 'Arango'};
+var html = '<h2>' + empleado.nombre + '</h2>' + '<h1>' + 
+	empleado.apellido + '</h1>';
+var empleadoBox = document.getElementById('empleadoBox');
+empleadoBox.innerHTML = html; 
+								</code>
+							</pre>
+					</section>
+
+
+					<section>
+					<h2>Mayores problemas:</h2>
+					</br>
+					<ul>
+						<li>La alta acoplación entre los datos y los componentes UI crea problemas de separación y reuso.</li>
+						<li>Multiplicación de lineas de código que pueden ser evitables.</li>
+						<li>Aplicaciones más difíciles de escribir y mantener.</li>
+					</ul>
+				</section>
+
+				<section>
+						<h2>Y entonces?</h2>
+						<pre>
+								<code data-trim contenteditable>
+<div id='empleadoBox'>
+ </div>
+								</code>
+							</pre>
+							<pre>
+								<code data-trim contenteditable>
+<script type="mustache/template" id="empleado-template">
+	<h2>{{nombre}}</h2>
+	<h1>{{apellido}}</h1>
+</script>
+
+var empleado = {nombre: 'Ricardo', apellido: 'Arango'};
+var tmpl = document.getElementById('empleado-template').innerHTML;
+var html = Mustache.to_html(tmpl, empleado);
+var empleadoBox = document.getElementById('empleadoBox');
+empleadoBox.innerHTML = html; 
+								</code>
+							</pre>
+					</section>
+
+
+					<section>
+						<h2>USO</h2>
+							<pre>
+								<code data-trim contenteditable>
+var empleado = {
+  nombre: "Ricardo",
+  salario: function () {
+    return 2000 + 400;
+  }
+};
+
+var tmpl = '{{nombre}} gana ${{salario}}';
+var output = Mustache.render(tmpl, empleado);
+								</code>
+							</pre>
+							<p>
+								En este ejemplo <strong>Mustache.render</strong> toma dos parámetros: el template y los datos.
+							</p>
+					</section>
+
+
+					<section>
+					<h2>Templates</h2>
+					</br>
+					<p>
+						Son Strings que contienen Mustache tags. Los tags son formados por llaves dobles: <strong>{{ }}</strong> y apuntan
+						al elemento que contienen: <strong>{{nombre}}</strong>.
+					</p>
+				</section>
+
+
+				<section>
+					<h2>Variables</h2>
+					</br>
+					<p>
+						Es el tipo de tag más simple. El tag <strong>{{nombre}}</strong> imprimirá el valor del atributo nombre
+						en el contexto actual. Si el atributo no existe no se imprimirá nada.
+					</p>
+
+					<p>
+						Todas las variables son formateadas por defecto. Para impidir el formateo usamos tres llaves: 
+						<strong>{{{htmlText}}}</strong> o el caracter '&': <strong>{{&htmlText}}</strong>
+					</p>
+
+					<pre>
+								<code data-trim contenteditable>
+var empleado = {
+nombre: 'Ricardo',
+blog: '<strong>Mi Blog</strong>'
+};
+
+var formateado = Mustache.render('{{blog}}', empleado);
+var sinFormato = Mustache.render('{{{blog}}}', empleado);
+var atributoNoExiste = Mustache.render('{{apellido}}', empleado);
+								</code>
+							</pre>
+				</section>
+
+
+				<section>
+					<h2>Dot notation</h2>
+					</br>
+					<p>
+						Se usa para acceder a atributos que son propiedades de objetos en los datos a mostrar.
+					</p>
+
+					<pre>
+								<code data-trim contenteditable>
+var empleado = {
+  "nombre": {
+    "primernombre": "Ricardo",
+    "apellido": "Arango"
+  },
+  "edad": "29"
+};
+
+var tmpl = 'Empleado: {{nombre.primernombre}} {{nombre.apellido}}. 
+	Edad: {{edad}}';
+var output = Mustache.render(tmpl, empleado);
+								</code>
+							</pre>
+				</section>
+
+				<section>
+					<h2>Secciones</h2>
+					</br>
+					<p>
+						Las secciones imprimen bloques de texto una o varias veces dependiendo del valor del atributo
+						en el contexto actual. Las secciones comienzan con numeral y se cierran con slash.
+						El comportamiento de las secciones se determina por el valor del atributo.
+					</p>
+
+					<pre>
+								<code data-trim contenteditable>
+{{#blog}}
+Sección blog.
+{{/blog}}
+
+								</code>
+					</pre>
+
+					<p><small><strong>
+						La sección blog no se imprimira si:</strong>
+						<ul>
+							<li>La propiedad blog no existe en el objeto</li>
+							<li>blog es null</li>
+							<li>blog es undefined</li>
+							<li>blog es false</li>
+						</ul>
+					</small></p>
+				</section>
+
+
+				<section>
+					<h2>Secciones</h2>
+					</br>
+					
+					<pre>
+								<code data-trim contenteditable>
+var empleado = {
+  "nombre": {
+    "primernombre": "Ricardo",
+    "apellido": "Arango"
+  },
+  "edad": "29"
+};
+
+var tmpl = 'Empleado: {{#nombre}}
+			{{nombre.primernombre}} 
+			{{nombre.apellido}}
+		{{/nombre}}. 
+	Edad: {{edad}}. 
+	{{#blog}}
+		Blog: {{blog}} 
+	{{/blog}}';
+var output = Mustache.render(tmpl, empleado);
+
+								</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Secciones invertidas</h2>
+					</br>
+
+					<p>
+
+					</p>	
+					      Comienza con el tag <strong>{{^seccion}}</strong> en lugar de <strong>{{#seccion}}</strong>
+					<pre>
+								<code data-trim contenteditable>
+{{^blog}}
+Sección blog.
+{{/blog}}
+
+								</code>
+					</pre>
+					<p><small><strong>
+						La sección blog se imprimira si:</strong>
+						<ul>
+							<li>Blog es una lista vacía</li>
+							<li>blog es null</li>
+							<li>blog es undefined</li>
+							<li>blog es false</li>
+						</ul>
+					</small></p>
+				</section>
+
+
+				<section>
+					<h2>Secciones invertidas</h2>
+					</br>
+					
+					<pre>
+								<code data-trim contenteditable>
+var empleado = {
+  "nombre": {
+    "primernombre": "Ricardo",
+    "apellido": "Arango"
+  },
+  "edad": "29",
+  "blog": []
+};
+var tmpl = 'Empleado: {{#nombre}}
+			{{nombre.primernombre}} 
+			{{nombre.apellido}}
+		{{/nombre}}. 
+	Edad: {{edad}}. 
+	{{^blog}}
+		El empleado no tiene blog.
+	{{/blog}}';
+var output = Mustache.render(tmpl, empleado);
+
+								</code>
+					</pre>
+				</section>
+
+
+				<section>
+					<h2>Listas</h2>
+					</br>
+					
+					<p>
+						Cuando la variable es una lista el bloque se imprime por cada uno de los elementos de la lista.
+					</p>
+					<pre>
+								<code data-trim contenteditable>
+var empleado = {
+  "nombre": {
+    "primernombre": "Ricardo",
+    "apellido": "Arango"
+  },
+  "edad": "29",
+  "habilidades": [
+  	{"habilidad": "Programar"},
+  	{"habilidad": "Gerenciar"},
+  	{"habilidad": "Testing"},
+  	{"habilidad": "Pruebas unitarias"},
+  ]
+};
+
+var tmpl = '{{#habilidades}}{{habilidad}} - {{/habilidades}}';
+var output = Mustache.render(tmpl, empleado);
+
+								</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Listas</h2>
+					</br>
+					
+					<p>
+						Cuando se itera sobre un arreglo de string, se usa el tag <strong>{{.}}</strong>
+					</p>
+					<pre>
+								<code data-trim contenteditable>
+var empleado = {
+  "nombre": {
+    "primernombre": "Ricardo",
+    "apellido": "Arango"
+  },
+  "edad": "29",
+  "habilidades": ["Programar", "Gerenciar","Testing","Pruebas unitarias"]
+};
+
+var tmpl = '{{#habilidades}}{{.}} - {{/habilidades}}';
+var output = Mustache.render(tmpl, empleado);
+
+								</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Listas</h2>
+					</br>
+
+					<p>
+ 					    Si el valor de una variable en una sección es una función, será llamada en el contexto del ítem actual
+ 					    en cada iteración de la lista.
+					</p>
+					
+					<pre>
+								<code data-trim contenteditable>
+var empleados = {
+  "empleados": [
+  	{ "primernombre": "Ricardo", "apellido": "Arango"},
+  	{ "primernombre": "Gustavo", "apellido": "Arroyave"},
+  	{ "primernombre": "Pablo", "apellido": "Acosta"},
+  	{ "primernombre": "Pamela", "apellido": "Rucinque"}
+  ],
+  "nombre": function() {
+  	return this.primernombre + " " + this.apellido;
+  }
+};
+
+var tmpl = '{{#empleados}}{{nombre}} - {{/empleados}}';
+var output = Mustache.render(tmpl, empleados);
+
+								</code>
+					</pre>
+				</section>
+
+
+				<section>
+					<h2>Funciones</h2>
+					</br>
+					
+					<p>
+						Si el valor de una sección es una función, es llamada con el literal que se definió dentro de la sección del
+						template como primer argumento, el segundo argumento en la función render de Mustache js.
+					</p>
+					<pre>
+								<code data-trim contenteditable>
+var empleado = {
+  "nombre": {
+    "primernombre": "Ricardo",
+    "apellido": "Arango"
+  },
+  "saludo": function() {
+     return function(text, render) {
+        return "Hola. " + render(text);
+     }
+  }
+};
+var tmpl = '{{#saludo}}
+	Mi nombre es {{nombre.primernombre}}.
+	{{/saludo}}';
+var output = Mustache.render(tmpl, empleado);
+
+								</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Comentarios</h2>
+					</br>
+					
+					<pre>
+
+								<code data-trim contenteditable>
+{{! Si existe nombre}}									
+{{#nombre}}
+	{{nombre.primernombre}} 
+	{{nombre.apellido}}
+{{/nombre}}. 
+
+{{! edad}}
+Edad: {{edad}}. 
+
+{{! Si no tiene blog}}		
+{{^blog}}
+	El empleado no tiene blog.
+{{/blog}}';
+
+								</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Partials</h2>
+					</br>
+					<p>
+                        Se representan con el tag <strong>{{>partial}}</strong>
+					</p>
+					<pre>
+
+								<code data-trim contenteditable>
+base.mustache:
+<h2>Names</h2>
+{{#names}}
+  {{> user}}
+{{/names}}
+
+user.mustache:
+<strong>{{name}}</strong>
+								</code>
+					</pre>
+					<pre>
+
+								<code data-trim contenteditable>
+<h2>Names</h2>
+{{#names}}
+  <strong>{{name}}</strong>
+{{/names}}
+								</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Partials</h2>
+					</br>
+					
+					<pre>
+
+								<code data-trim contenteditable>
+var empleado = {
+  "nombre": "Ricardo",
+  "apellido": "Arango",
+  "direccion": "Diagonal 79 9-133",
+  "ciudad": "Medellín"
+};
+var tmpl = '{{nombre}} {{apellido}}. {{>partialdireccion}}';
+var partial = {partialdireccion: "Dirección: {{direccion}}, {{ciudad}}"};
+var output = Mustache.render(tmpl, empleado, partial);
+
+								</code>
+					</pre>
+				</section>
+
+
+				<section>
+					<h2>Partials en secciones enumerables</h2> 
+					
+					<pre>
+
+								<code data-trim contenteditable>
+
+var data = { 
+  "cursos": [
+    {   "nombre": "Ingeniería",
+        "estudiantes": [
+            {"primernombre": "Ricardo", "apellido": "Arango"},
+            {"primernombre": "Esteban", "apellido": "Pérez"}
+        ]
+    },
+    {   "nombre": "Ciencias",
+        "estudiantes": [
+            {"primernombre": "Paula", "apellido": "López"},
+            {"primernombre": "Juan", "apellido": "Vélez"}
+        ]
+    }]
+};
+var tmpl = "{{#cursos}}<h1>{{nombre}}</h1>" +
+          "<ul>{{#estudiantes}}{{>estudiantepartial}}{{/estudiantes}}</ul>{{/cursos}}";
+var partial = {estudiantepartial: "<li>{{primernombre}} {{apellido}}</li>"};
+var output = Mustache.render(tmpl, data, partial);
+								</code>
+					</pre>
+				</section>
+
+
+				<section>
+					<h2>Templates compiladas</h2> 
+					</br>
+
+					<p>
+						Templates pueden ser compiladas para mejorar el desempeño cuando se pintan en pantalla.
+						Se compilan cuando se tiene una sección UI que se pinta múltiples veces.
+					</p>
+					
+					<pre>
+
+								<code data-trim contenteditable>
+
+var empleado = {
+  "nombre": {
+    "primernombre": "Ricardo",
+    "apellido": "Arango"
+  },
+  "edad": "29"
+};
+
+var tmpl = 'Empleado: {{nombre.primernombre}} {{nombre.apellido}}';
+var compiledTemplate = Mustache.compile(tmpl); //retorna una función
+var output = compiledTemplate(empleado);
+								</code>
+
+					</pre>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
