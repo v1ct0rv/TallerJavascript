@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JQuery : Selectores, Ajax, json, jsonp</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Victor Velásquez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" href="css/jquery.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>jQuery</h1>
+					<h3>"Escribe menos, haz más."</h3>
+					<p>
+						<small>Created by <a href="http://victorvelasquez.com">Victor Velásquez</a> / <a href="http://twitter.com/vic977">@vic977</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Qué es jQuery?</h2>
+					<p>
+						JQuery es una librería JavaScript muy liviana, que nos ayuda a usar mas fácilmente JavaScript en nuestros sitios web.
+					</p>
+					<p>
+						JQuery encapsula las tareas mas comunes que normalmente requieren muchas lineas de código para llevarlas a cabo, y  las entrega para que nosotros las llamemos con una sola linea de código. 
+					</p>
+
+					<aside class="notes">
+						
+					</aside>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Porqué usar JQuery?</h2>
+						<p>
+							<div class="features-box">
+								<div class="feature-box lightweight-footprint center-txt ">
+									<div class="feature-box-image"></div>
+									<h3>Lightweight Footprint</h3>
+									<p>Only 32kB minified and gzipped.</p>
+								</div>
+
+								<div class="feature-box css3-compliant center-txt ">
+									<div class="feature-box-image"></div>
+									<h3>CSS3 Compliant</h3>
+									<p>Supports CSS3 selectors to find elements as well as in style property manipulation</p>
+								</div>
+
+								<div class="feature-box cross-browser center-txt ">
+									<div class="feature-box-image"></div>
+									<h3>Cross-Browser</h3>
+									<p>IE, Firefox, Safari, Opera, Chrome, and more</p>
+								</div>
+							</div>
+							<a href="#" class="navigate-down"></a>
+						</p>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Browser Support</h2>
+						<p>
+							<table id="support-matrix">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Internet Explorer</th>
+										<th>Chrome</th>
+										<th>Firefox</th>
+										<th>Safari</th>
+										<th>Opera</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>jQuery 1.x</th>
+										<td>6+</td>
+										<td rowspan="2">Current − 1 version</td>
+										<td rowspan="2">Current − 1 version</td>
+										<td rowspan="2">Current − 1 version</td>
+										<td rowspan="2">Current − 1 version</td>
+									</tr>
+									<tr>
+										<th>jQuery 2.x</th>
+										<td>9+</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="legend">
+								<p>Any problem with jQuery in the above browsers should be considered and reported as a bug in jQuery.</p>
+
+								<p>Current - 1 version denotes that we support the current stable version of the browser and the version that preceded it. For example, if the current version of a browser is 24.x, we support the 24.x and 23.x versions.</p>
+							</div>
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Para qué sirve jquery?</h2>
+					<ul>
+						<li class="fragment">Navegación y Manipulación del DOM</li>
+						<li class="fragment">Manipulación de CSS (estilos)</li>
+						<li class="fragment">Manipulación de eventos</li>
+						<li class="fragment">Ajax</li>
+						<li class="fragment">Efectos y animaciones</li>
+						<li class="fragment">y muchas funciones utilitarias...</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>Navegación y Manipulación del DOM</h2>
+						<h3>Selectores</h3>
+						<p>
+							Por un selector entendemos en jQuery lo mismo que en CSS: una forma de permitirnos elegir un elemento (o varios) entre todos los que tenemos en nuestro documento HTML. ¿Para qué? Para luego poder aplicar sobre los elementos seleccionados diversas funciones.
+						</p>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Que es el DOM?</h2>
+						<p>
+							DOM (Document Object Model, "Modelo de Objetos del Documento" o "Modelo en objetos para la Representación de Documentos") Proporciona un conjunto estándar de objetos para representar documentos HTML y XML.
+						</p>
+					</section>
+					<section>
+						<h2>Que es el DOM?</h2>
+						<p>
+							<img src="img/dom.png" alt="DOM">
+						</p>
+					</section>
+					<section>
+						<h2>$('selector')</h2>
+						<p>
+							<img src="img/selectores.png" alt="DOM">
+						</p>
+						<aside class="notes">
+							$(‘selector’)
+
+							No importa qué tipo de selector usemos en jQuery: siempre comenzaremos con $(). Prácticamente todo lo que se pueda usar en CSS se puede también incluir entre esos paréntesis de esta forma $(‘selectores’). De tal manera que por ejemplo podríamos hacer
+						</aside>
+					</section>
+					<section>
+						<h3>Cómo sé si mi selector contiene elementos?</h3>
+						<div>
+						<pre>
+							<code> 
+//No funciona 
+if($("div.header")) { 
+  //Hago algo
+}
+							</code>
+						</pre>
+						</div>
+						<p>
+						    JQuery siempre retorna un objeto cuando se usa un Selector. Y como ya vimos un objeto evaluado en un if es TRUE.
+						</p>
+						<p> Debemos usar la propiedad length</p>
+						<pre>
+							<code>
+if($("div.header").length){
+//Hago algo
+}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Selectores CSS</h2>
+						<p>
+							<img src="img/selectores_css.png" alt="Selectores CSS">
+						</p>
+						<aside class="notes">
+							Selectores CSS
+
+							jQuery soporta prácticamente todos los selectores de CSS, con la ventaja de que podemos utilizar selectores de CSS3 que funcionen con Internet Explorer 6 gracias a jQuery. Lo vemos mejor con estos ejemplos:
+						</aside>
+					</section>
+					<section>
+						<h2>Selectores propios</h2>
+						<p>
+							<img src="img/selectores_positional1.png" alt="Selectores posicionales">
+						</p>
+						<aside class="notes">
+							Selectores propios de jQuery
+
+						  A la amplia variedad de selectores propios de CSS jQuery añade sus propios selectores. Como característica que les distingue decir que siempre comienzan por dos puntos (:)
+
+							Vamos a distinguir entre ellos:
+
+							Selectores Posicionales
+							Estos selectores están basados en las relaciones posicionales entre elementos (como veíamos antes en ejemplo de la estructura del DOM). Como antes, los vamos a ver a través de ejemplos:
+						</aside>
+					</section>
+					<section>
+						<h3>Selectores de Formulario</h3>
+						<p>
+							<img src="img/selectores_formulario.png" alt="Selectores de Formulario">
+						</p>
+						<aside class="notes">
+							Selectores de Formularios
+							Cuando trabajemos con formularios jQuery nos ofrece una serie de selectores propios que nos permiten seleccionar de manera sencilla el elemento preciso. Vamos a verlos con ejemplos:
+						</aside>
+					</section>
+					<section>
+						<h3>Más Selectores</h3>
+						<p>
+							<a href="resources/rc007-jquery_online.pdf" target="_blank">Descargar PDF</a>
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Manipulación de eventos</h2>
+						<p>
+							<a href="#" class="image navigate-down">
+								<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+							</a>
+						</p>
+					</section>
+					<section>
+						<h3>Eventos</h3>
+						<ul>
+							<li>click</li>
+							<li>Change</li>
+							<li>blur</li>
+							<li>focus</li>
+							<li>hover</li>
+							<li>Más en <a href="http://api.jquery.com/category/events/">http://api.jquery.com/category/events/</a></li>
+						</ul>
+					</section>
+					<section>
+						<h3>Método .on()</h3>
+						<p>
+							<pre>
+							<code>
+jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblclick " +
+      "mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
+      "change select submit keydown keypress keyup error contextmenu").split(" "), function( i, name ) {
+ 
+      // Handle event binding
+      jQuery.fn[ name ] = function( data, fn ) {
+            if ( fn == null ) {
+                  fn = data;
+                  data = null;
+            }
+ 
+            return arguments.length -> 0 ?
+                  this.on( name, null, data, fn ) :
+                  this.trigger( name );
+      };
+							</code>
+							</pre>	
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Manipulación de CSS (estilos)</h2>
+						<p>
+							<a href="#" class="image navigate-down">
+								<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+							</a>
+						</p>
+					</section>
+					<section>
+						<h3>Métodos</h3>
+						<ul>
+							<li><a href="http://api.jquery.com/addClass/">.addClass()</a></li>
+							<li><a href="http://api.jquery.com/css/">.css()</a></li>
+							<li><a href="http://api.jquery.com/hasClass/">.hasClass()</a></li>
+							<li><a href="http://api.jquery.com/removeClass/">.removeClass()</a></li>
+							<li><a href="http://api.jquery.com/toggleClass/">.toggleClass()</a></li>
+							<li><a href="http://api.jquery.com/offset/">.offset()</a> </li>
+							<li>Más en <a href="http://api.jquery.com/category/css/">http://api.jquery.com/category/css/</a></li>
+					</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Ajax</h2>
+						<p>
+							<a href="#" class="image navigate-down">
+								<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+							</a>
+						</p>
+					</section>
+					<section>
+						<h3>Métodos</h3>
+						<ul>
+							<li><a href="http://api.jquery.com/jQuery.get/">.get()</a></li>
+							<li><a href="http://api.jquery.com/jQuery.post/">.post()</a></li>
+							<li><a href="http://api.jquery.com/load/">.load()</a></li>
+							<li><a href="http://api.jquery.com/jQuery.getJSON/">.getJSON()</a></li>
+							<li>Más en <a href="http://api.jquery.com/category/ajax/">http://api.jquery.com/category/ajax/</a></li>
+					</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Efectos y animaciones</h2>
+						<p>
+							<a href="#" class="image navigate-down">
+								<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+							</a>
+						</p>
+					</section>
+					<section>
+						<h2>Que es el DOM?</h2>
+						<p>
+							DOM (Document Object Model, "Modelo de Objetos del Documento" o "Modelo en objetos para la Representación de Documentos") Proporciona un conjunto estándar de objetos para representar documentos HTML y XML.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>y muchas funciones utilitarias...</h2>
+						<p>
+							TODO Herencia
+							TODO clonacion
+							TODO No Confict
+							<a href="#" class="image navigate-down">
+								<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+							</a>
+						</p>
+					</section>
+					<section>
+						<h2>Que es el DOM?</h2>
+						<p>
+							DOM (Document Object Model, "Modelo de Objetos del Documento" o "Modelo en objetos para la Representación de Documentos") Proporciona un conjunto estándar de objetos para representar documentos HTML y XML.
+						</p>
+					</section>
+				</section>
+
+
+				<section>
+					<h2>No Conflict</h2>
+					<p>
+						Try it out! You can swipe through the slides and pinch your way to the overview.
+					</p>
+				</section>
+
+				<section>
+					<h1>FIN</h1>
+					<h3>BY VictorV</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

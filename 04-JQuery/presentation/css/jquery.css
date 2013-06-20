@@ -1,0 +1,72 @@
+div .feature-box {
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+}
+.features-box .feature-box p {
+  font-size: 16px;
+  line-height: 1em;
+  padding: 0;
+}
+.features-box .feature-box  h3 {
+  margin-bottom: 0.5em;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: bold;
+}
+.feature-box-image {
+margin: 0 auto 1em auto !important;
+width: 120px;
+height: 107px;
+overflow: hidden;
+}
+.lightweight-footprint .feature-box-image {
+  background: url('i/feature-sprites.png') 0px 0px no-repeat;
+}
+.css3-compliant .feature-box-image {
+background: url('i/feature-sprites.png') -139px 0px no-repeat;
+}
+.cross-browser .feature-box-image:hover {
+-webkit-transition: all 0.7s linear;
+-webkit-transform: rotate(6.28rad);
+transition: all 0.7s;
+transform: rotate(6.28rad);
+}
+.cross-browser .feature-box-image {
+background: url('i/feature-sprites.png') -278px 0px no-repeat;
+-webkit-transition: all 0.4s;
+transition: all 0.4s;
+position: relative;
+z-index: 10;
+} 
+.center-txt {
+text-align: center !important;
+}
+#support-matrix {
+  font-size: 20px;
+  width: 100%;
+  margin: 0 auto 1em;
+  -webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+#support-matrix thead tr {
+  border-bottom: 2px solid #666;
+}
+#support-matrix th, #support-matrix td {
+  padding: .5em;
+  text-align: center;
+}
+#support-matrix td {
+  vertical-align: middle;
+}
+#support-matrix th {
+  font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
+  font-weight: bold;
+}
+div.legend {
+  font-size: 25px;
+  line-height: 1em;
+  padding: 0;
+  text-align: left;
+}
