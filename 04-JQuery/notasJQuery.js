@@ -33,14 +33,13 @@ sidebar.text('<a href=\'#\'>Link</a>');
 sidebar.append('<a href=\'#\'>Link</a>');
 
 
-
 //+++++++++++++++EVENTOS+++++++++++++++++//
 // .click existe, pero por buenas prácticas es mejor hacerlo con la sintaxis 'on'
-// por qué? --> Averiguar. 
+// Por qué? --> Averiguar. 
 
-// Todos los click presionados sobre los <li> de un tag cuya clase sea 'resources'
-// en vez de hacer lo que iba a hacer antes, ejecute la función que le paso por parametro
-// en este caso con alert('aja')
+// En el evento de los <li> de un tag cuya clase sea 'resources'
+// ejecute la función que le paso por parametro en este caso con alert('aja')
+// Esto no reemplaza ningùn evento asociado anteriormente, sino que lo concatena
 $('.resources li').on('click', function() {
 	alert('aja');
 });
