@@ -15,7 +15,8 @@
 	<script id="videosTemplate" type="text/template">
 		<li>
 			<h2>Title: {{title.$t}}</h2>
-			Published: {{published.$t}}
+			{{#author}}Author: {{>authorpartial}}{{/author}}
+			<p>Published: {{published.$t}}<p>
 		</li>
 	</script>
 	
@@ -24,7 +25,8 @@
 			var tmp = $('#videosTemplate').html();
 			$.getJSON("http://gdata.youtube.com/feeds/users/PlayStation/uploads?alt=json-in-script&max-results=30&callback=?", function(data) {
 				$.each(data.feed.entry, function(i, item) {
-					var html = Mustache.to_html(tmp, item);
+				    var partials = {authorpartial: item.author[0].name.$t};
+					var html = Mustache.to_html(tmp, item, partials);
 					$("#result").append(html);
 				});
 			});
@@ -33,5 +35,6 @@
 	
 	<!-- Crear carpeta js/vendor, poner localmente el archivo de jquery en caso que el CDN falle-->
 	<!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>-->
+
 </body>
 </html>
