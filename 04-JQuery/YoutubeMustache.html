@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="result">
+		<ul>
+			
+		</ul>
+	</div>
+	<script type="text/mustache">
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var tmp = "{{title.$t}}";
+			$.getJSON("http://gdata.youtube.com/feeds/users/PlayStation/uploads?alt=json-in-script&max-results=30&callback=?", function(data) {
+
+				$.each(data.feed.entry, function(i, item) {
+					
+					var output = Mustache.to_html(tmp, item);
+					$("<li>").text(output).appendTo("#result ul")
+				})
+			})
+		})
+	</script>
+	
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+</body>
+</html>

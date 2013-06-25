@@ -49,6 +49,35 @@ $._data( $(".resources li")[0], "events" );
 
 //Sizzle: Selector engine de JQuery (En caso que no esté usando JQuery como librería)
 
+//++++++++++++++++++++ AJAX ++++++++++++++++++++++++++//
+
+//the default method is get
+$.ajax({
+	type: 'get', //this is redundant
+	....
+})
+
+//.done es equivalente all callback
+
+//visualJson para validar lo que retorna una url rest
+
+//cuando yo dentro de un selector pongo <>, JQuery crea el tag
+//$("<li>") --> Eso crea un tag <li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
