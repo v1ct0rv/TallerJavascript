@@ -63,22 +63,3 @@ $.ajax({
 
 //cuando yo dentro de un selector pongo <>, JQuery crea el tag
 //$("<li>") --> Eso crea un tag <li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
