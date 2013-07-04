@@ -1,0 +1,12 @@
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<div class="container">
+<h2> Datos en Vista 1 </h2>
+<h2> {{titleOne}} </h2>
+
+<ul>
+	<li ng-repeat="name in names">
+	Nombre en Vista 1: {{name}}
+	</li>
+</ul>
+</div>
+<input type="button" ng-click="goToSecondView()" value="Ir a Vista 2"></input> 

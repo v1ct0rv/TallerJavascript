@@ -1,0 +1,11 @@
+<h2>Vamos a realizar</h2>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+INGRESA UN NUEVA TAREA <input type="text" ng-model="nuevaTarea" placeholder="What is this?" />
+<button class="button" ng-click="agregarTarea()">Agregar tarea</button>
+<br/>
+<div ng-show="tengoTareas()">
+<div ng-include src="'src/views/tarea.html'"></div>
+</div>
+

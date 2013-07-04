@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app>
+
+<head>
+<title>ANGULAR</title>
+</head>
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<body>
+<div class="container" ng-init="names=['andres','camilo','felipe','juan']">
+	<input type="text" ng-model="nameText" />
+<ul>
+	<li ng-repeat="name in names | filter:nameText">
+	{{name}}
+	</li>
+</ul>
+
+{{name}}
+</div>
+
+<script src="angular.min.js"></script>
+</body>
+</html>

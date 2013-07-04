@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="demoApp">
+
+<head>
+	<meta charset="UTF-8">
+<title>ANGULAR</title
+	
+</head>
+
+<body>
+	ESTO ES GENERAL PARA CUALQUIER VISTA
+<div ng-view="">
+</div>
+<script src="angular.min.js"></script>
+<script>
+	var demoApp = angular.module('demoApp', [], function ($compileProvider) {
+
+  $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|http|file):/
+  	);
+
+});
+
+	demoApp.config(function ($routeProvider){
+		$routeProvider
+			.when('/',
+			{
+				controller: 'MyController',
+				templateUrl: 'View1.html'
+			})
+			.when('/partial2',
+			{
+				controller: 'MyController',
+				templateUrl: 'View2.html'
+			})
+			.otherwise({redirectTo: '/'});
+	});
+
+	demoApp.controller('MyController', function($scope){
+		$scope.names = ['andres','camilo','felipe','juan'];
+		$scope.titleOne = "Título para la Vista 1";
+		$scope.titleTwo = "Este es un título distinto";
+		$scope.goToSecondView = function(){
+			window.location = "#/partial2";
+
+		};
+
+		$scope.goToFirstView = function(){
+			window.location = "#/";
+
+		};
+
+	});
+
+	
+</script>
+</body>
+</html>

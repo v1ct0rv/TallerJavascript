@@ -1,0 +1,40 @@
+<h1>	Tiene un total de {{totalTareas}} tarea(s) </h1>
+
+<br/>
+<br/>
+<br/>
+<strong>Tareas pendientes</strong>
+<ul>
+    <li ng-repeat="tarea in tareas | filter:pendiente">
+    	<img src="img/finish.jpg" width="20px" height="20px" ng-click="finalizar(tarea)"/>
+	    <img src="img/delete.jpg" width="20px" height="20px" ng-click="eliminar(tarea)"/>
+	    	<div ng-click="modificar(tarea)">
+		    	<div ng-show="!tarea.modificando">
+		    		{{tarea.nombre}}
+		    	</div>
+	    	</div>
+	    	<div ng-show="tarea.modificando">
+	    			<input type="text" ng-model="tarea.nombre"/>
+	    			<input type="button" ng-click="finalizarModificacion(tarea)" value="GUARDAR"/>
+	    	</div>
+    	
+    	<br/>
+  </li>
+</ul>
+
+<strong>Tareas finalizadas</strong>
+<ul>
+    <li ng-repeat="tarea in tareas | filter:finalizada" >
+    	<img src="img/delete.jpg" width="20px" height="20px" ng-click="eliminar(tarea)"/>
+    	{{tarea.nombre}}
+		<br/>
+  </li>
+</ul>
+
+<strong>Tareas eliminadas</strong>
+<ul>
+    <li ng-repeat="tarea in tareas | filter:eliminada">
+    	{{tarea.nombre}}
+    	<br/>
+  </li>
+</ul>
