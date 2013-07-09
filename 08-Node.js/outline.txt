@@ -1,0 +1,25 @@
+cuál es la bulla con node?
+	
+	event-driven
+	thread based (Apache) vs event-driven
+	http://code.danyork.com/2011/01/25/node-js-doctors-offices-and-fast-food-restaurants-understanding-event-driven-programming/
+
+Diferencia con otros Web Servers?
+
+Conceptos claves de Node.js
+	Single threaded (Muy muy muy importante --> Si se hace cualquier cosa sincronizada, ya no se recibe ningún otro request.)
+	non-blocking I/O
+	event loop
+	callback pattern
+
+Archivos Importantes
+	Package.json
+		name
+		version
+		dependencies
+
+	Server.js
+
+Modulos
+
+Third party Modules

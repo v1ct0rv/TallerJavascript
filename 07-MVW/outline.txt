@@ -1,0 +1,31 @@
+MVC vs. MVP
+ Cuál era el problema?
+  Inmantenibilidad del código
+
+ MVC
+ Patron de arquitectura
+  Patrones de diseño usados
+
+ MVP
+ Patron de arquitectura
+  Patrones de diseño usados
+
+ Más desacoplado MVP que MVC
+
+MV* 
+ Cuál era el problema?
+  HTML5, WebApps más complejas
+ Global variable
+ Object literal
+ SPA
+
+Backbone
+ Overview 
+  dependecias
+  componentes principales
+   Model
+   View
+   Collection
+   Router
+
+ Características principales
