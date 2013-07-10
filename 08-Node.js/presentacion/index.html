@@ -97,17 +97,33 @@
 						<li>Cuando la BD responde, se retorna la ejecución de la primera petición y se le muestra la página al usuario</li>
 					</ol>
 					<br><br>
-					Nota: Esto fue altamente simplificado! Más adelente habrá más detalles. 
+					Nota: Esto fue altamente simplificado! Detrás de esto hay mucho más, obviamente.
 				</section>
 					<section>
 					<h3>Otros concepto claves de Node.js</h3>
 					<p>
 						<ul>
-							<li>Usa un solo thread para manejar todos los requests</li>
-							<li>Se basa en el modelo "non-blocking I/O" o "Asynchronous I/O" para procesar los requests</li>
+							<li>Usa un solo thread para procesar todos los requests**</li>
+							<li>Se basa en el modelo "non-blocking I/O" o "Asynchronous I/O"</li>
 							<li>El patrón callback es esencial</li>
 							<li>Tiene una cola de eventos (Event loop)</li>
 						</ul>
+					</p>
+					<small>**No del todo cierto.</small>
+				</section>
+				<section>
+					<h3>Event Loop</h3>
+					<p>
+						Node tiene una cola de eventos y un manejador llamado <strong>Event Loop</strong>.
+						Allí se encolan todos los eventos emitidos por todos los requests, por ejemplo: <br>
+						<ul>
+							<li>Cuando llega un nuevo request al servidor</li>
+							<li>Cuando se termina de leer un archivo</li>
+							<li>Cuando se termina de ejecutar un query</li>
+							<li>Algo especificado por nosotros, por ejemplo, cuando se termine de ejecutar una función que hace procesos pesados sobre datos</li>
+							<li>etc...</li>
+						</ul>
+						Es por esto que se dice que es single-threaded, el Event loop es un solo hilo. 
 					</p>
 				</section>
 			</div>
