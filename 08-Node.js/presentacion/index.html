@@ -50,7 +50,7 @@
 						Se dice que Node.js es un servidor liviano, que pone a correr JavaScript del lado del servidor, que es muy fácil de ejecutar, pero... <br><br>
 						Cuál es, realmente, la "bulla" con Node.js? <br><br>
 						La "bulla" es, realmente, que su manejo de conexiones es "event-driven"
-						(Apache es thread-based).
+						(Apache es thread-based). Ah! Y no es, solamente, un servidor Web.
 					</p>
 
 				</section>
@@ -99,7 +99,7 @@
 					<br><br>
 					Nota: Esto fue altamente simplificado! Detrás de esto hay mucho más, obviamente.
 				</section>
-					<section>
+				<section>
 					<h3>Otros concepto claves de Node.js</h3>
 					<p>
 						<ul>
@@ -109,22 +109,81 @@
 							<li>Tiene una cola de eventos (Event loop)</li>
 						</ul>
 					</p>
-					<small>**No del todo cierto.</small>
+					<small>**No del todo cierto, ya veremos por qué</small>
 				</section>
 				<section>
 					<h3>Event Loop</h3>
 					<p>
 						Node tiene una cola de eventos y un manejador llamado <strong>Event Loop</strong>.
-						Allí se encolan todos los eventos emitidos por todos los requests, por ejemplo: <br>
+						Allí se encolan todos los eventos emitidos por todos los requests, por ejemplo: <br><br>
 						<ul>
 							<li>Cuando llega un nuevo request al servidor</li>
 							<li>Cuando se termina de leer un archivo</li>
 							<li>Cuando se termina de ejecutar un query</li>
-							<li>Algo especificado por nosotros, por ejemplo, cuando se termine de ejecutar una función que hace procesos pesados sobre datos</li>
 							<li>etc...</li>
 						</ul>
-						Es por esto que se dice que es single-threaded, el Event loop es un solo hilo. 
 					</p>
+						El Event loop es un solo hilo, es por esto que se dice que Node es "single-threaded".
+				</section>
+				<section>
+					<h3>Event Loop</h3>
+					<p>
+						El Event loop se encarga de:
+						<ul>
+							<li>Manejar todos los eventos de la cola</li>
+							<li>Delegar a otros hilos** la ejecución de operaciones I/O</li>
+							<li>Ejecutar el código no I/O (o sea, el que escribimos)</li>
+						</ul> 
+
+					</p>
+					<small>**Por esto es que, realmente, Node no usa un único hilo</small>
+				</section>
+				<section>
+					<h3>Event Loop</h3>
+					<p>
+						Debido a que el Event loop es un único hilo, si en su código pone a dormir el hilo así: 
+						<pre>
+							<code contentenabled data-trim class="javascript">
+for(i=0; i&lt;5; i++) {
+ sleep(1000);
+}								
+							</code>
+						</pre>
+						Bloquea, por 5 segundos, el Event Loop completo! <br>
+						O sea, todo el servidor.
+
+					</p>
+				</section>
+				<section>
+					<p>
+						Cómo hace Node para que las tareas de I/O no bloqueen el Event Loop y cuando termine se siga ejecutando el resto? <br><br>
+						Usa el modelo Asynchronous I/O y el patrón callback. <br><br>
+						
+					</p>
+				</section>
+				<section>
+					<p>
+						Al programar una tarea I/O, Node.js recibe, como parámetro, una función que se llamará al terminar el I/O. (callback) <br><br>
+						La tarea se mete a la cola de eventos y cuando se ejecuta, el Event Loop le asigna un hilo separado del principal. <br>
+						Cuando termina, vuelve al Event Loop y se ejecuta el callback.
+
+						<pre>
+							<code contentenabled data-trim class="javascript">
+fs.readFile('miArchivo.txt', function (err, buffer) {
+ if (err) {
+    console.error(err.stack);
+ } else {
+  console.log(buffer);
+ }
+});
+							</code>
+						</pre>
+					</p>
+				</section>
+				<section>
+					<figure>
+						<img src="images/node.png" />
+					</figure>
 				</section>
 			</div>
 
