@@ -1,0 +1,40 @@
+Instalación de Nodejs en Windows, Mac y Linux
+
+Windows
+Paso 1: Ir a http://nodejs.org
+Paso 2: Descargar el archivo
+Paso 3: Instalar NodeJs
+Paso 4: Buscar en sus programas instalados: "Node.js Command Prompt"
+Paso 5: Teclear node -v para comprobar que se instalo
+Deberan tener v0.8.x
+
+Mac
+Paso 1: Ir a http://nodejs.org
+Paso 2: Descargar el archivo
+Paso 3: Instalar NodeJs
+Paso 4: Abrir el programa "Terminal"
+Paso 5: Teclear node -v para comprobar que se instalo
+Deberan tener v0.8.x
+
+Alternativo
+1. Instalar HomeBrew
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+2. brew install node
+3. Teclear node -v para comprobar que se instalo
+
+Ubuntu
+Paso 1: Abrir la terminal
+Paso 2: Instalar dependencias así:
+> sudo apt-get install build-essential git-core libssl-dev libssl0.9.8
+Paso 3: Descargar Node
+> git clone git://github.com/joyent/node
+Después entra al folder que acabas de descargar con:
+> cd node
+Paso 4: Pasar a NodeJs 0.8.4
+> git checkout v0.8.4 
+Paso 5: Compilar e instalar NodeJs
+> ./configure
+> make 
+> sudo make install
+Paso 6: Teclear node -v para comprobar que se instalo
+Deberan tener v0.8.x

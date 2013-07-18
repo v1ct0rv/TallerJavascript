@@ -1,0 +1,10 @@
+{
+	"name" : "GridClase",
+	"version" : "0.0.1",
+	"dependencies": {
+		"express" : "3.3.4",
+		"socket.io" : "0.9.16",
+		"swig" : "0.14.0",
+		"consolidate": "0.9.1"
+	}
+}

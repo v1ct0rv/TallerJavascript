@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo Ajax</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $.getJSON("http://gdata.youtube.com/feeds/users/PlayStation/uploads?alt=json-in-script&max-results=30&callback=?", function(data) {
+            //console.log(data.feed.entry);
+            $.each(data.feed.entry, function(i, item){
+                $("<li>").text(item.title.$t).appendTo("#result ul");
+            });
+        });
+
+        $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+        {
+          /* Tags de busqueda en flickr */
+          tags: "gatos",
+          tagmode: "any",
+          format: "json"
+        },function(data) {
+            console.log(data);
+            $.each(data.items, function(i, item) {
+                $("<img/>").attr("src", item.media.m).appendTo("#imagenes");
+                if(i==5) return false;
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+    <div id="imagenes">
+    </div>
+    <div id="result">
+        <ul>
+            
+        </ul>
+    </div>
+</body>
+</html>

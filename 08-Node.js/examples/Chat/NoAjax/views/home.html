@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>Chat del curso</title>
+</head>
+<body>
+	<h1>Chat del curso</h1>
+	<form action="/mensajes/new" method="post">
+		<p><input type="text" name="mensaje" /></p>
+		<p><input type="submit" id="enviar-mensaje" value="Enviar mensaje" /></p>	
+	</form>
+	<ul id="chat">
+		{% for mensaje in mensajes %}
+			<li>{{mensaje}}</li>
+		{% endfor %}
+	</ul>
+</body>
+<script type="text/javascript">
+	 setTimeout(function(){window.location = "/mensajes/list"}, 1000);
+</script>
+</html>
